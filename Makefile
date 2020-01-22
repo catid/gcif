@@ -1,11 +1,11 @@
 # Change your compiler settings here
 
-#CCPP = g++
-#CC = gcc
-#OPTFLAGS = -O3 -fomit-frame-pointer -funroll-loops
-CCPP = clang++
-CC = clang
-OPTFLAGS = -O4
+CCPP = g++
+CC = gcc
+OPTFLAGS = -O3 -fomit-frame-pointer -funroll-loops
+#CCPP = clang++
+#CC = clang
+#OPTFLAGS = -O4
 CFLAGS = -Wall -fstrict-aliasing
 CPFLAGS = $(CFLAGS)
 
@@ -93,7 +93,7 @@ decomp : $(decode_objects) decomp.o
 # gcif executable
 
 gcif : $(gcif_objects)
-	$(CCPP) -o gcif $(gcif_objects)
+	$(CCPP) -o gcif $(gcif_objects) -lpthread
 
 
 # Application files

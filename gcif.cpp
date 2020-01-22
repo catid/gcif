@@ -45,6 +45,7 @@ using namespace cat;
 #ifdef CAT_ENABLE_LIBPNG
 #include <png.h>
 #endif
+#include <unistd.h>
 
 //#define CAT_BENCH_ONE /* Benchmark on one thread one file at a time to determine where in a benchmark there is a problem */
 

@@ -83,8 +83,8 @@ public:
 	// bool IsMasked(u16 x, u16 y)
 	typedef Delegate2<bool, u16, u16> MaskDelegate;
 
-	// u8 read(u16 x, ImageReader & CAT_RESTRICT reader)
-	typedef Delegate2<u8, u16, ImageReader & CAT_RESTRICT> ReadDelegate;
+	// u8 read(u16 x, ImageReader & reader)
+	typedef Delegate2<u8, u16, ImageReader &> ReadDelegate;
 
 	struct Parameters {
 		u8 * CAT_RESTRICT data;			// Output data
@@ -130,24 +130,24 @@ protected:
 
 	void cleanup();
 
-	u8 read_lz_row_filter(u16 code, ImageReader & CAT_RESTRICT reader, u16 x, u8 * CAT_RESTRICT data);
+	u8 read_lz_row_filter(u16 code, ImageReader & reader, u16 x, u8 * CAT_RESTRICT data);
 
 	// Edge-safe row filter version
-	u8 read_row_filter(u16 x, ImageReader & CAT_RESTRICT reader);
+	u8 read_row_filter(u16 x, ImageReader & reader);
 
-	u8 read_lz_tile(u16 code, ImageReader & CAT_RESTRICT reader, u16 x, u8 * CAT_RESTRICT data);
-
-	// Safe tiled version, for edges of image
-	u8 read_tile_safe(u16 x, ImageReader & CAT_RESTRICT reader);
-
-	// Faster tiled version, when spatial filters can be unsafe
-	u8 read_tile_unsafe(u16 x, ImageReader & CAT_RESTRICT reader);
+	u8 read_lz_tile(u16 code, ImageReader & reader, u16 x, u8 * CAT_RESTRICT data);
 
 	// Safe tiled version, for edges of image
-	u8 read_tile_safe_lz(u16 x, ImageReader & CAT_RESTRICT reader);
+	u8 read_tile_safe(u16 x, ImageReader & reader);
 
 	// Faster tiled version, when spatial filters can be unsafe
-	u8 read_tile_unsafe_lz(u16 x, ImageReader & CAT_RESTRICT reader);
+	u8 read_tile_unsafe(u16 x, ImageReader & reader);
+
+	// Safe tiled version, for edges of image
+	u8 read_tile_safe_lz(u16 x, ImageReader & reader);
+
+	// Faster tiled version, when spatial filters can be unsafe
+	u8 read_tile_unsafe_lz(u16 x, ImageReader & reader);
 
 public:
 	CAT_INLINE MonoReader() {

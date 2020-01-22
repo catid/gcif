@@ -327,7 +327,7 @@ u8 MonoReader::read_lz_row_filter(u16 code, ImageReader & CAT_RESTRICT reader, u
 }
 
 // Edge-safe row filter version
-u8 MonoReader::read_row_filter(u16 x, ImageReader & CAT_RESTRICT reader) {
+u8 MonoReader::read_row_filter(u16 x, ImageReader & reader) {
 #ifdef CAT_DEBUG
 	const u16 y = _current_y;
 #endif
@@ -440,7 +440,7 @@ u8 MonoReader::read_tile_safe(u16 x, ImageReader & CAT_RESTRICT reader) {
 }
 
 // Faster tiled version, when spatial filters can be unsafe
-u8 MonoReader::read_tile_unsafe(u16 x, ImageReader & CAT_RESTRICT reader) {
+u8 MonoReader::read_tile_unsafe(u16 x, ImageReader & reader) {
 #ifdef CAT_DEBUG
 	const u16 y = _current_y;
 #endif
@@ -510,7 +510,7 @@ u8 MonoReader::read_tile_unsafe(u16 x, ImageReader & CAT_RESTRICT reader) {
 	return ( *data = static_cast<u8>( value ) );
 }
 
-u8 MonoReader::read_lz_tile(u16 code, ImageReader & CAT_RESTRICT reader, u16 x, u8 * CAT_RESTRICT data) {
+u8 MonoReader::read_lz_tile(u16 code, ImageReader & reader, u16 x, u8 * CAT_RESTRICT data) {
 	// Decode LZ match
 	u32 dist;
 	int len = _lz.read(code, reader, dist);
@@ -546,7 +546,7 @@ u8 MonoReader::read_lz_tile(u16 code, ImageReader & CAT_RESTRICT reader, u16 x, 
 }
 
 // Safe tiled version, for edges of image
-u8 MonoReader::read_tile_safe_lz(u16 x, ImageReader & CAT_RESTRICT reader) {
+u8 MonoReader::read_tile_safe_lz(u16 x, ImageReader & reader) {
 #ifdef CAT_DEBUG
 	const u16 y = _current_y;
 #endif
@@ -651,7 +651,7 @@ u8 MonoReader::read_tile_safe_lz(u16 x, ImageReader & CAT_RESTRICT reader) {
 }
 
 // Faster tiled version, when spatial filters can be unsafe
-u8 MonoReader::read_tile_unsafe_lz(u16 x, ImageReader & CAT_RESTRICT reader) {
+u8 MonoReader::read_tile_unsafe_lz(u16 x, ImageReader & reader) {
 #ifdef CAT_DEBUG
 	const u16 y = _current_y;
 #endif

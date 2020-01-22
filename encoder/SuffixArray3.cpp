@@ -2,6 +2,7 @@
 #include "libdivsufsort/divsufsort.h"
 #include "../decoder/Enforcer.hpp"
 #include "../decoder/BitMath.hpp"
+#include <climits>
 using namespace std;
 using namespace cat;
 
